@@ -97,7 +97,7 @@ namespace CastleTests
 			object proxy = generator.CreateClassProxy(typeof(ClassWithIndexer), logger);
 
 			Assert.IsNotNull(proxy);
-			Assert.IsInstanceOf(typeof(ClassWithIndexer), proxy);
+			Assert.That(proxy, Is.InstanceOf<ClassWithIndexer>());
 
 			ClassWithIndexer type = (ClassWithIndexer)proxy;
 
@@ -123,7 +123,7 @@ namespace CastleTests
 			object proxy = generator.CreateClassProxy(typeof(DiffAccessLevelOnProperties), logger);
 
 			Assert.IsNotNull(proxy);
-			Assert.IsInstanceOf(typeof(DiffAccessLevelOnProperties), proxy);
+			Assert.That(proxy, Is.InstanceOf<DiffAccessLevelOnProperties>());
 
 			DiffAccessLevelOnProperties type = (DiffAccessLevelOnProperties)proxy;
 

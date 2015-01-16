@@ -20,7 +20,7 @@ namespace Castle.DynamicProxy.Tests.Interceptors
 	{
 		public void Intercept(IInvocation invocation)
 		{
-			Assert.IsNotInstanceOf<IChangeProxyTarget>(invocation);
+			Assert.That(invocation, Is.Not.InstanceOf<IChangeProxyTarget>());
 			invocation.Proceed();
 		}
 	}

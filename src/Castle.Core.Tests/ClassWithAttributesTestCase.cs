@@ -35,11 +35,11 @@ namespace Castle.DynamicProxy.Tests
 
 			object[] attributes = instance.GetType().GetCustomAttributes(typeof (NonInheritableAttribute), false);
 			Assert.AreEqual(1, attributes.Length);
-			Assert.IsInstanceOf(typeof (NonInheritableAttribute), attributes[0]);
+			Assert.That(attributes[0], Is.InstanceOf<NonInheritableAttribute>());
 
 			attributes = instance.GetType().GetMethod("OnMethod").GetCustomAttributes(typeof (NonInheritableAttribute), false);
 			Assert.AreEqual(1, attributes.Length);
-			Assert.IsInstanceOf(typeof (NonInheritableAttribute), attributes[0]);
+			Assert.That(attributes[0], Is.InstanceOf<NonInheritableAttribute>());
 		}
 
 		[Test]
@@ -50,7 +50,7 @@ namespace Castle.DynamicProxy.Tests
 
 			object[] attributes = instance.GetType().GetCustomAttributes(typeof (ComplexNonInheritableAttribute), false);
 			Assert.AreEqual(1, attributes.Length);
-			Assert.IsInstanceOf(typeof (ComplexNonInheritableAttribute), attributes[0]);
+			Assert.That(attributes[0], Is.InstanceOf<ComplexNonInheritableAttribute>());
 			ComplexNonInheritableAttribute att = (ComplexNonInheritableAttribute) attributes[0];
 			// (1, 2, true, "class", FileAccess.Write)
 			Assert.AreEqual(1, att.Id);
@@ -61,7 +61,7 @@ namespace Castle.DynamicProxy.Tests
 
 			attributes = instance.GetType().GetMethod("Do1").GetCustomAttributes(typeof (ComplexNonInheritableAttribute), false);
 			Assert.AreEqual(1, attributes.Length);
-			Assert.IsInstanceOf(typeof (ComplexNonInheritableAttribute), attributes[0]);
+			Assert.That(attributes[0], Is.InstanceOf<ComplexNonInheritableAttribute>());
 			att = (ComplexNonInheritableAttribute) attributes[0];
 			// (2, 3, "Do1", Access = FileAccess.ReadWrite)
 			Assert.AreEqual(2, att.Id);
@@ -72,7 +72,7 @@ namespace Castle.DynamicProxy.Tests
 
 			attributes = instance.GetType().GetMethod("Do2").GetCustomAttributes(typeof (ComplexNonInheritableAttribute), false);
 			Assert.AreEqual(1, attributes.Length);
-			Assert.IsInstanceOf(typeof (ComplexNonInheritableAttribute), attributes[0]);
+			Assert.That(attributes[0], Is.InstanceOf<ComplexNonInheritableAttribute>());
 			att = (ComplexNonInheritableAttribute) attributes[0];
 			// (3, 4, "Do2", IsSomething=true)
 			Assert.AreEqual(3, att.Id);
@@ -120,7 +120,7 @@ namespace Castle.DynamicProxy.Tests
 			var attribute = proxy.GetType()
 				.GetCustomAttributes(typeof(NonInheritableWithArrayAttribute), false)
 				.Cast<NonInheritableWithArrayAttribute>().Single();
-			CollectionAssert.AreEqual(attribute.Values, new[] {"1", "2", "3"});
+			Assert.That(attribute.Values, Is.EqualTo(new[] {"1", "2", "3"}));
 		}
 
 		[Test]
@@ -130,7 +130,7 @@ namespace Castle.DynamicProxy.Tests
 			var attribute = proxy.GetType()
 				.GetCustomAttributes(typeof(NonInheritableWithArray2Attribute), false)
 				.Cast<NonInheritableWithArray2Attribute>().Single();
-			CollectionAssert.AreEqual(attribute.Values, new[] { "1", "2", "3" });
+			Assert.That(attribute.Values, Is.EqualTo(new[] { "1", "2", "3" }));
 		}
 	}
 }

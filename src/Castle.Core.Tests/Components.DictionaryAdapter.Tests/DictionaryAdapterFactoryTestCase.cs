@@ -1393,7 +1393,7 @@ namespace Castle.Components.DictionaryAdapter.Tests
 					new PropertyDescriptor().AddBehaviors(new CreateHashtableStrategy()));
 
 			Assert.IsNotNull(container.Address);
-			Assert.IsInstanceOf<Hashtable>(container.This.Dictionary);
+			Assert.That(container.This.Dictionary, Is.InstanceOf<Hashtable>());
 		}
 
 		[Test]

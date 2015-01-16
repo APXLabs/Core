@@ -52,8 +52,8 @@ namespace Castle.DynamicProxy.Tests
 			first.OneMethod();
 			second.OneMethod();
 
-			Assert.IsNotInstanceOf<IChangeProxyTarget>(interceptor1.Invocation);
-			Assert.IsInstanceOf<IChangeProxyTarget>(interceptor2.Invocation);
+			Assert.That(interceptor1.Invocation, Is.Not.InstanceOf<IChangeProxyTarget>());
+			Assert.That(interceptor2.Invocation, Is.InstanceOf<IChangeProxyTarget>());
 			Assert.AreNotEqual(interceptor1.Invocation.GetType(), interceptor2.Invocation.GetType());
 		}
 	}

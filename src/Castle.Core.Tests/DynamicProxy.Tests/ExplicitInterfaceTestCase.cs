@@ -117,14 +117,14 @@ namespace Castle.DynamicProxy.Tests
 			var proxy = generator.CreateClassProxy(typeof(ExplicitInterfaceWithPropertyImplementation),
 			                                       new[] { typeof(ISimpleInterfaceWithProperty) },
 			                                       interceptor);
-			Assert.IsNotEmpty(proxy.GetType().GetProperties());
+			Assert.That(proxy.GetType().GetProperties(), Is.Not.Empty);
 		}
 
 		[Test]
 		public void ExplicitInterface_properties_should_be_public_interface()
 		{
 			var proxy = generator.CreateInterfaceProxyWithoutTarget(typeof(ISimpleInterfaceWithProperty), interceptor);
-			Assert.IsNotEmpty(proxy.GetType().GetProperties());
+			Assert.That(proxy.GetType().GetProperties(), Is.Not.Empty);
 		}
 
 		[Test]

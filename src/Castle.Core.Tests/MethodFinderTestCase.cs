@@ -32,7 +32,7 @@ namespace Castle.DynamicProxy.Tests
 			List<object> actualAsList = new List<object>(actual);
 			foreach (object expectedElement in expected)
 			{
-				Assert.Contains(expectedElement, actualAsList);
+				Assert.That(actualAsList, Contains.Item(expectedElement));
 				actualAsList.Remove(expectedElement);
 				// need to remove the element after it has been found to guarantee that duplicate elements are handled correctly
 			}

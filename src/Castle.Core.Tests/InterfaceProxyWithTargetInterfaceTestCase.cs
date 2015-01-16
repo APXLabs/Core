@@ -206,8 +206,8 @@ namespace Castle.DynamicProxy.Tests
 			var ex = Assert.Throws<GeneratorException>(() => generator.CreateInterfaceProxyWithTargetInterface<IList<IList<PrivateInterface>>>(new List<IList<PrivateInterface>>(), new IInterceptor[0]));
 
 			var expected = string.Format("Can not create proxy for type {0} because type {1} is not accessible. Make it public, or internal",
-				typeof(IList<IList<PrivateInterface>>).FullName, typeof(PrivateInterface).FullName);
-			StringAssert.StartsWith(expected, ex.Message);
+					typeof(IList<IList<PrivateInterface>>).FullName, typeof(PrivateInterface).FullName);
+			Assert.That(ex.Message, Is.StringStarting(expected));
 		}
 
 		[Test]

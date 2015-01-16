@@ -128,7 +128,7 @@ namespace Castle.DynamicProxy.Tests
 
 			var expected = string.Format("Can not create proxy for type {0} because type {1} is not accessible. Make it public, or internal",
 					typeof(List<List<PrivateClass>>).FullName, typeof(PrivateClass).FullName);
-			StringAssert.StartsWith(expected, ex.Message);
+			Assert.That(ex.Message, Is.StringStarting(expected));
 		}
 
 		[Test]
@@ -164,7 +164,7 @@ namespace Castle.DynamicProxy.Tests
 			generator.CreateClassProxyWithTarget(typeof(VirtualClassWithPublicField), Type.EmptyTypes,
 			                                     new VirtualClassWithPublicField(), new ProxyGenerationOptions(hook),
 			                                     new object[0]);
-			Assert.IsNotEmpty((ICollection) hook.NonVirtualMembers);
+			Assert.That((ICollection) hook.NonVirtualMembers, Is.Not.Empty);
 			var memberInfo = hook.NonVirtualMembers.Single(m => m is FieldInfo);
 			Assert.AreEqual("field", memberInfo.Name);
 			Assert.AreEqual(MemberTypes.Field, memberInfo.MemberType);
@@ -177,7 +177,7 @@ namespace Castle.DynamicProxy.Tests
 			generator.CreateClassProxyWithTarget(typeof(VirtualClassWithPublicField), Type.EmptyTypes,
 			                                     new VirtualClassWithPublicField(), new ProxyGenerationOptions(hook),
 			                                     new object[0]);
-			Assert.IsNotEmpty((ICollection) hook.NonVirtualMembers);
+			Assert.That((ICollection) hook.NonVirtualMembers, Is.Not.Empty);
 			var memberInfo = hook.NonVirtualMembers.Single(m => m is FieldInfo);
 			Assert.AreEqual("field", memberInfo.Name);
 			Assert.AreEqual(MemberTypes.Field, memberInfo.MemberType);
@@ -192,7 +192,7 @@ namespace Castle.DynamicProxy.Tests
 			var target = new SimpleClassWithProperty();
 			var proxy = generator.CreateClassProxyWithTarget(target, options);
 
-			Assert.IsInstanceOf(typeof(ISimpleMixin), proxy);
+			Assert.That(proxy, Is.InstanceOf<ISimpleMixin>());
 		}
 
 #if !SILVERLIGHT

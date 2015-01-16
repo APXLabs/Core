@@ -25,7 +25,7 @@ namespace Castle.DynamicProxy.Tests
 			// http://support.castleproject.org/projects/DYNPROXY/issues/view/DYNPROXY-ISSUE-108
 			var proxy = generator.CreateClassProxy(typeof(Classes.ClassWith_Smart_Attribute));
 			var properties = proxy.GetType().GetProperties();
-			Assert.IsNotEmpty(properties);
+			Assert.That(properties, Is.Not.Empty);
 			Assert.DoesNotThrow(() => properties[0].GetCustomAttributes(false));
 		}
 	}

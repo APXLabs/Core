@@ -22,7 +22,7 @@ namespace Castle.DynamicProxy.Tests.Interceptors
 
         public void Intercept(IInvocation invocation)
         {
-            Assert.IsInstanceOf(typeof (IChangeProxyTarget), invocation);
+			Assert.That(invocation, Is.InstanceOf<IChangeProxyTarget>());
             invocation.Proceed();
         }
 

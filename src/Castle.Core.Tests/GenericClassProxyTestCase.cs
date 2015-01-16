@@ -179,8 +179,8 @@ namespace Castle.DynamicProxy.Tests
 			object ret1 = proxy.DoSomethingT();
 			object ret2 = proxy.DoSomethingZ();
 
-			Assert.IsInstanceOf(typeof (List<object>), ret1);
-			Assert.IsInstanceOf(typeof (List<object>), ret2);
+			Assert.That(ret1, Is.InstanceOf<List<object>>());
+			Assert.That(ret2, Is.InstanceOf<List<object>>());
 			Assert.AreEqual("DoSomethingT DoSomethingZ ", logger.LogContents);
 		}
 

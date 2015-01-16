@@ -37,8 +37,8 @@ namespace Castle.DynamicProxy.Tests
 			PersistentProxyBuilder builder = new PersistentProxyBuilder();
 			builder.CreateClassProxyType(typeof(object), Type.EmptyTypes, ProxyGenerationOptions.Default);
 			string path = builder.SaveAssembly();
-			Assert.IsNotNull(path);
-			Assert.IsNotEmpty(path);
+			Assert.That(path, Is.Not.Null);
+			Assert.That(path, Is.Not.Empty);
 			Assert.IsTrue(Path.IsPathRooted(path));
 			Assert.IsTrue(path.EndsWith(ModuleScope.DEFAULT_FILE_NAME));
 		}

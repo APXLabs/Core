@@ -152,7 +152,7 @@ namespace Castle.DynamicProxy.Tests
 
 			result = string.Empty;
 			Assert.DoesNotThrow(() => proxy.Did(ref result));
-			Assert.IsEmpty(result);
+			Assert.That(result, Is.Empty);
 		}
 
 		[Test]

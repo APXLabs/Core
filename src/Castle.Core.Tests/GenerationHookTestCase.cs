@@ -81,8 +81,8 @@ namespace CastleTests
 			generator.CreateClassProxy(typeof(EmptyClass), new ProxyGenerationOptions(hook));
 
 			var getType = typeof(EmptyClass).GetMethod("GetType");
-			CollectionAssert.DoesNotContain(hook.AskedMembers, getType);
-			CollectionAssert.DoesNotContain(hook.NonVirtualMembers, getType);
+			Assert.That(hook.AskedMembers, Has.No.Member(getType));
+			Assert.That(hook.NonVirtualMembers, Has.No.Member(getType));
 		}
 
 		[Test]
@@ -93,8 +93,8 @@ namespace CastleTests
 			generator.CreateClassProxy(typeof(EmptyClass), new ProxyGenerationOptions(hook));
 
 			var memberwiseClone = typeof(EmptyClass).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
-			CollectionAssert.DoesNotContain(hook.AskedMembers, memberwiseClone);
-			CollectionAssert.DoesNotContain(hook.NonVirtualMembers, memberwiseClone);
+			Assert.That(hook.AskedMembers, Has.No.Member(memberwiseClone));
+			Assert.That(hook.NonVirtualMembers, Has.No.Member(memberwiseClone));
 		}
 
 		[Test]
@@ -105,7 +105,7 @@ namespace CastleTests
 			generator.CreateClassProxy(typeof(EmptyClass), new ProxyGenerationOptions(hook));
 
 			var equals = typeof(EmptyClass).GetMethod("Equals");
-			CollectionAssert.Contains(hook.AskedMembers, equals);
+			Assert.That(hook.AskedMembers, Contains.Item(equals));
 		}
 
 		[Test]
@@ -116,7 +116,7 @@ namespace CastleTests
 			generator.CreateClassProxy(typeof(EmptyClass), new ProxyGenerationOptions(hook));
 
 			var getHashCode = typeof(EmptyClass).GetMethod("GetHashCode");
-			CollectionAssert.Contains(hook.AskedMembers, getHashCode);
+			Assert.That(hook.AskedMembers, Contains.Item(getHashCode));
 		}
 
 		[Test]
@@ -127,7 +127,7 @@ namespace CastleTests
 			generator.CreateClassProxy(typeof(EmptyClass), new ProxyGenerationOptions(hook));
 
 			var equals = typeof(EmptyClass).GetMethod("ToString");
-			CollectionAssert.Contains(hook.AskedMembers, equals);
+			Assert.That(hook.AskedMembers, Contains.Item(equals));
 		}
 	}
 

@@ -220,9 +220,9 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 			Assert.AreEqual(team1Name, season.FirstTeamName);
 			Assert.AreEqual("notes", season.Notes); // TODO: Improve
 			Assert.AreEqual(3, season.Tags.Length);
-			Assert.Contains(tags[0], season.Tags);
-			Assert.Contains(tags[1], season.Tags);
-			Assert.Contains(tags[2], season.Tags);
+			Assert.That(season.Tags, Contains.Item(tags[0]));
+			Assert.That(season.Tags, Contains.Item(tags[1]));
+			Assert.That(season.Tags, Contains.Item(tags[2]));
 			Assert.IsNotNull(season.ExtraStuff);
 			Assert.AreEqual(licenseNo, season.ExtraStuff["LicenseNo", "RISE"].InnerText);
 		}
@@ -722,7 +722,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 			var taggedNode = document["Tagged", ""];
 			var tagsNode = taggedNode.GetElementsByTagName("string", "urn:www.castle.org:tags");
 			var t = tagsNode.Cast<XmlNode>().Select(node => node.InnerText).ToArray();
-			CollectionAssert.AreEqual(tags.Tags, t);
+			Assert.That(tags.Tags, Is.EqualTo(t));
 		}
 
 		[Test]
@@ -818,7 +818,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 			var season = CreateXmlAdapter<ISeason>(null, ref document);
 			season.Tags = new[] { "Hello", "Goodbye" };
 			season.Tags = new[] { "Alpha", "Beta" };
-			CollectionAssert.AreEqual(new[] { "Alpha", "Beta" }, season.Tags);
+			Assert.That(season.Tags, Is.EqualTo(new[] { "Alpha", "Beta" }));
 		}
 
 		[Test]
@@ -1035,7 +1035,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 
 			var groupRead = CreateXmlAdapter<IGroup>(null, ref document);
 			Assert.AreEqual(2, groupRead.Id);
-			Assert.IsInstanceOf<IManager>(groupRead.Owner);
+			Assert.That(groupRead.Owner, Is.InstanceOf<IManager>());
 			var managerRead = (IManager)groupRead.Owner;
 			Assert.AreEqual(manager.Name, managerRead.Name);
 			Assert.AreEqual(manager.Level, managerRead.Level);
@@ -1045,17 +1045,17 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 			Assert.AreEqual(employee.Job.Title, employeesRead[0].Job.Title);
 			Assert.AreEqual(employee.Job.Salary, employeesRead[0].Job.Salary);
 			Assert.AreEqual(employee.Metadata.Tag, employeesRead[0].Metadata.Tag);
-			CollectionAssert.AreEqual(employee.Key, employeesRead[0].Key);
+			Assert.That(employee.Key, Is.EqualTo(employeesRead[0].Key));
 			Assert.AreEqual(manager.Name, employeesRead[1].Name);
-			Assert.IsInstanceOf<IManager>(employeesRead[1]);
+			Assert.That(employeesRead[1], Is.InstanceOf<IManager>());
 			var managerEmplRead = (IManager)employeesRead[1];
 			Assert.AreEqual(manager.Level, managerEmplRead.Level);
-			CollectionAssert.AreEqual(group.Tags, groupRead.Tags);
+			Assert.That(group.Tags, Is.EqualTo(groupRead.Tags));
 			var extraInfoRead = groupRead.ExtraInfo;
 			Assert.AreEqual(3, extraInfoRead.Length);
 			Assert.AreEqual(group.ExtraInfo[0], extraInfoRead[0]);
 			Assert.AreEqual(group.ExtraInfo[1], extraInfoRead[1]);
-			Assert.IsInstanceOf<IManager>(extraInfoRead[2]);
+			Assert.That(extraInfoRead[2], Is.InstanceOf<IManager>());
 			var managerExtra = (IManager)extraInfoRead[2];
 			Assert.AreEqual(manager.Name, managerExtra.Name);
 			Assert.AreEqual(manager.Level, managerExtra.Level);
@@ -1128,7 +1128,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 				var groupRead = (Group)serializer.Deserialize(stream);
 
 				Assert.AreEqual(2, groupRead.Id);
-				Assert.IsInstanceOf<Manager>(groupRead.Owner);
+				Assert.That(groupRead.Owner, Is.InstanceOf<Manager>());
 				var managerRead = (Manager)groupRead.Owner;
 				Assert.AreEqual(manager.Name, managerRead.Name);
 				Assert.AreEqual(manager.Level, managerRead.Level);
@@ -1138,17 +1138,17 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 				Assert.AreEqual(employee.Job.Title, employeesRead[0].Job.Title);
 				Assert.AreEqual(employee.Job.Salary, employeesRead[0].Job.Salary);
 				Assert.AreEqual(employee.Metadata.Tag, employeesRead[0].Metadata.Tag);
-				CollectionAssert.AreEqual(employee.Key, employeesRead[0].Key);
+				Assert.That(employee.Key, Is.EqualTo(employeesRead[0].Key));
 				Assert.AreEqual(manager.Name, employeesRead[1].Name);
-				Assert.IsInstanceOf<Manager>(employeesRead[1]);
+				Assert.That(employeesRead[1], Is.InstanceOf<Manager>());
 				var managerEmplRead = (Manager)employeesRead[1];
 				Assert.AreEqual(manager.Level, managerEmplRead.Level);
-				CollectionAssert.AreEqual(group.Tags, groupRead.Tags);
+				Assert.That(group.Tags, Is.EqualTo(groupRead.Tags));
 				Assert.IsNull(groupRead.Comment);
 				Assert.AreEqual(3, groupRead.ExtraInfo.Length);
 				Assert.AreEqual(group.ExtraInfo[0], groupRead.ExtraInfo[0]);
 				Assert.AreEqual(group.ExtraInfo[1], groupRead.ExtraInfo[1]);
-				Assert.IsInstanceOf<Manager>(groupRead.ExtraInfo[2]);
+				Assert.That(groupRead.ExtraInfo[2], Is.InstanceOf<Manager>());
 				var managerExtra = (Manager)groupRead.ExtraInfo[2];
 				Assert.AreEqual(manager.Name, managerExtra.Name);
 				Assert.AreEqual(manager.Level, managerExtra.Level);

@@ -123,7 +123,7 @@ namespace Castle.DynamicProxy.Tests
 			options.BaseTypeForInterfaceProxy = typeof (SimpleClass);
 			var proxy = generator.CreateInterfaceProxyWithoutTarget(typeof (IService), Type.EmptyTypes, options);
 
-			Assert.IsInstanceOf<SimpleClass>(proxy);
+			Assert.That(proxy, Is.InstanceOf<SimpleClass>());
 		}
 
 		[Test]
@@ -272,7 +272,7 @@ namespace Castle.DynamicProxy.Tests
 				typeof(IList<IList<PrivateInterface>>).FullName, typeof(PrivateInterface).FullName);
 
 			var exception = Assert.Throws<GeneratorException>(() => generator.CreateInterfaceProxyWithoutTarget(typeof(IList<IList<PrivateInterface>>), new IInterceptor[0]));
-			StringAssert.StartsWith(expected, exception.Message);
+			Assert.That(exception.Message, Is.StringStarting(expected));
 		}
 
 		[Test]
