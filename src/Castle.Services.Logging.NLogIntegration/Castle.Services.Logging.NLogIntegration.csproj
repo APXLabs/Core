@@ -202,12 +202,26 @@
       <Link>CastleKey.snk</Link>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Castle.Core\Castle.Core.csproj">
-      <Project>{E4FA5B53-7D36-429E-8E5C-53D5479242BA}</Project>
-      <Name>Castle.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <Choose>
+    <When Condition="$(MSBuildTargets) == 'Silverlight 5.0'">
+      <ItemGroup>
+        <ProjectReference Include="..\Castle.Core-SL\Castle.Core-SL.csproj">
+          <Project>{0d7699dc-0955-4bdb-8e8f-0bc2ef4549e3}</Project>
+          <Name>Castle.Core-SL</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(MSBuildTargets) != 'Silverlight 5.0'">
+      <ItemGroup>
+        <ProjectReference Include="..\Castle.Core-Desktop\Castle.Core-Desktop.csproj">
+          <Project>{1b1d6e3b-f0e3-4965-b257-796883d08293}</Project>
+          <Name>Castle.Core-Desktop</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+  </Choose>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" Condition="$(MSBuildTargets) != 'Silverlight 5.0'" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v5.0\Microsoft.Silverlight.CSharp.targets" Condition="$(MSBuildTargets) == 'Silverlight 5.0'" />
   <Import Project="$(RootPath)\Settings.proj" />

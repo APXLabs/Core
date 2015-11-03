@@ -121,13 +121,13 @@
     <Compile Include="SerilogLogger.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Castle.Core\Castle.Core.csproj">
-      <Project>{e4fa5b53-7d36-429e-8e5c-53d5479242ba}</Project>
-      <Name>Castle.Core</Name>
-    </ProjectReference>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <ProjectReference Include="..\Castle.Core-Desktop\Castle.Core-Desktop.csproj">
+      <Project>{1b1d6e3b-f0e3-4965-b257-796883d08293}</Project>
+      <Name>Castle.Core-Desktop</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(RootPath)\Settings.proj" />

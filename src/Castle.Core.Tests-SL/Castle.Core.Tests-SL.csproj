@@ -1,13 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-  </PropertyGroup>
   <PropertyGroup>
     <RootPath Condition=" '$(RootPath)' == '' ">$(MSBuildProjectDirectory)\..\..</RootPath>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <UpgradeBackupLocation />
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">SL50-Debug</Configuration>
@@ -18,9 +12,11 @@
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Castle.Core.Tests</RootNamespace>
+    <RootNamespace>CastleTests</RootNamespace>
     <AssemblyName>Castle.Core.Tests-SL</AssemblyName>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <SilverlightApplication>true</SilverlightApplication>
     <SupportedCultures>
     </SupportedCultures>
@@ -48,13 +44,14 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SL50-Debug|AnyCPU' ">
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
-    <OutputPath>bin\SL50-Debug\</OutputPath>
-    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <MSBuildTargets>Silverlight 5.0</MSBuildTargets>
     <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SL50-Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT SL5 FEATURE_LEGACY_REFLECTION_API</DefineConstants>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -62,18 +59,19 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SL50-Release|AnyCPU' ">
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <MSBuildTargets>Silverlight 5.0</MSBuildTargets>
     <OutputPath>bin\SL50-Release\</OutputPath>
-    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <DefineConstants>TRACE;SILVERLIGHT SL5 FEATURE_LEGACY_REFLECTION_API</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>  
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NET45-Debug|AnyCPU'">
     <OutputPath>bin\NET45-Debug\</OutputPath>
     <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
@@ -107,14 +105,20 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
+    <Reference Include="NUnit.Silverlight.Framework">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Castle.Core\bin\$(Configuration)\Castle.Core.dll</HintPath>
+      <HintPath>$(RootPath)\lib\sl50\NUnit.Silverlight.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.Core.Tests">
+    <Reference Include="NUnit.Silverlight.Compatibility">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Castle.Core.Tests\bin\$(Configuration)\Castle.Core.Tests.dll</HintPath>
+      <HintPath>$(RootPath)\lib\sl50\NUnit.Silverlight.Compatibility.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Castle.Core-SL\Castle.Core-SL.csproj">
+      <Project>{0d7699dc-0955-4bdb-8e8f-0bc2ef4549e3}</Project>
+      <Name>Castle.Core-SL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -130,8 +134,9 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v5.0\Microsoft.Silverlight.CSharp.targets" Condition="$(MSBuildTargets) == 'Silverlight 5.0'" />  
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v5.0\Microsoft.Silverlight.CSharp.targets" Condition="$(MSBuildTargets) == 'Silverlight 5.0'" />
   <Import Project="$(RootPath)\Settings.proj" />
+  <Import Project="..\Castle.Core.Tests\Castle.Core.Tests.projitems" Label="Shared" Condition="Exists('..\Castle.Core.Tests\Castle.Core.Tests.projitems')" />
   <Import Project="$(BuildScriptsPath)\Castle.Common.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
