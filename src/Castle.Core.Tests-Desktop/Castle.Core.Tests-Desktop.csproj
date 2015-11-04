@@ -155,19 +155,50 @@
     </Compile>
     <Compile Include="log4netIntegration\Log4netFactoryTestCase.cs" />
     <Compile Include="SerilogIntegration\SerilogTests.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="..\Castle.Core.Tests\Core.Tests\Resources\MoreRes\TestRes.Designer.cs">
+      <Link>Core.Tests\Resources\MoreRes\TestRes.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestRes.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="log4netIntegration\log4net.xml" />
+    <EmbeddedResource Include="..\Castle.Core.Tests\Core.Tests\Resources\MoreRes\TestRes.resx">
+      <Link>Core.Tests\Resources\MoreRes\TestRes.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TestRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="log4netIntegration\log4netConfig.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>log4netConfig.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Castle.Core.Tests\Core.Tests\Resources\file1.txt">
+      <Link>Core.Tests\Resources\file1.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="..\Castle.Core.Tests\Core.Tests\Resources\MoreRes\file2.txt">
+      <Link>Core.Tests\Resources\MoreRes\file2.txt</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Castle.Core-Desktop\Castle.Core-Desktop.csproj">

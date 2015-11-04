@@ -308,11 +308,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)OutRefParamsTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PersistentProxyBuilderTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interceptors\ProceedOnTypeInterceptor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ProxyGenerationOptionsTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interceptors\RequiredParamInterceptor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ProxyKind.cs" />
@@ -332,31 +327,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core.Tests\Resources\AssemblyResourceFactoryTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core.Tests\Resources\CustomUriTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core.Tests\Resources\FileResourceFactoryTestCase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core.Tests\Resources\MoreRes\TestRes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestRes.resx</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Core.Tests\Resources\UncResourceFactoryTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StreamLoggerTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestDictionaryValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TraceLoggerTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Core.Tests\Resources\file1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Core.Tests\Resources\MoreRes\TestRes.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>TestRes.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Content Include="$(MSBuildThisFileDirectory)Core.Tests\Resources\MoreRes\file2.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 </Project>
