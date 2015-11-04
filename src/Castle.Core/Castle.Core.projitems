@@ -147,7 +147,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\WeakKeyComparer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\WeakKeyDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\ReferenceEqualityComparer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Extensions\SimpleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\InternalsVisible.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\PermissionUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components.DictionaryAdapter\AbstractDictionaryAdapter.cs" />
@@ -372,7 +371,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\IUpgradeableLockHolder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\MonitorLockHolder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\MonitorUpgradeableLockHolder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\MonitorLock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\NoOpLock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\NoOpUpgradeableLock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Internal\SlimReadWriteLock.cs" />

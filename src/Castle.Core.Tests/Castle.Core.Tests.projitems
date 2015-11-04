@@ -321,7 +321,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ConsoleLoggerTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DiagnosticsLoggerTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LevelFilteredLoggerTests.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MonitorLockTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SlimReadWriteLockTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReflectionBasedDictionaryAdapterTestCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core.Tests\Resources\AssemblyResourceFactoryTestCase.cs" />

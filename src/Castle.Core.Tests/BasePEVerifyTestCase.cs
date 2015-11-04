@@ -18,11 +18,11 @@ namespace Castle.DynamicProxy.Tests
 	using System.Diagnostics;
 	using System.IO;
 
-	using CastleTests.Properties;
-
 	using NUnit.Framework;
 
 #if !__MonoCS__ && !SILVERLIGHT // mono doesn't have PEVerify
+	using CastleTests.Properties;
+
 	public class FindPeVerify
 	{
 		private static string FindPeVerifyPath()

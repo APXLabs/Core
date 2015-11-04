@@ -23,6 +23,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Castle.Services.Logging.NLogIntegration", "src\Castle.Services.Logging.NLogIntegration\Castle.Services.Logging.NLogIntegration.csproj", "{D680B5DB-B943-4BB5-891A-1695DEF86A3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Castle.Core.Tests-SL", "src\Castle.Core.Tests-SL\Castle.Core.Tests-SL.csproj", "{6EEEC4D0-17B6-474C-AF22-6B8BA2E9DD94}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D680B5DB-B943-4BB5-891A-1695DEF86A3A} = {D680B5DB-B943-4BB5-891A-1695DEF86A3A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Castle.Services.Logging.SerilogIntegration", "src\Castle.Services.Logging.SerilogIntegration\Castle.Services.Logging.SerilogIntegration.csproj", "{15410E1F-E79F-43B6-B403-228768DF793D}"
 EndProject
