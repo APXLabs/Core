@@ -66,9 +66,6 @@ namespace Castle.DynamicProxy.Tests
 #if !SILVERLIGHT
 
 		[Test]
-#if __MonoCS__
-		[Ignore("Expected: CastleDynProxy2.dll  But was:  /home/teamcity/buildagent/work/...")]
-#endif
 		public void ImplicitModulePaths()
 		{
 			var scope = new ModuleScope(true);
@@ -84,9 +81,6 @@ namespace Castle.DynamicProxy.Tests
 		}
 
 		[Test]
-#if __MonoCS__
-		[Ignore("Expected: StrongModule.dll  But was:  /home/teamcity/buildagent/work/...")]
-#endif
 		public void ExplicitModulePaths()
 		{
 			var scope = new ModuleScope(true, false, "Strong", "StrongModule.dll", "Weak", "WeakModule.dll");
@@ -129,9 +123,6 @@ namespace Castle.DynamicProxy.Tests
 		}
 
 		[Test]
-#if __MonoCS__
-		[Ignore("Expected: CastleDynProxy2.dll  But was:  /home/teamcity/buildagent/work/...")]
-#endif
 		public void SaveSigned()
 		{
 			var scope = new ModuleScope(true);
@@ -151,9 +142,6 @@ namespace Castle.DynamicProxy.Tests
 		}
 
 		[Test]
-#if __MonoCS__
-		[Ignore("Expected: CastleDynProxy2.dll  But was:  /home/teamcity/buildagent/work/...")]
-#endif
 		public void SaveUnsigned()
 		{
 			var scope = new ModuleScope(true);

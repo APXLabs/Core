@@ -53,9 +53,6 @@ namespace Castle.DynamicProxy.Tests
 #if SILVERLIGHT
 		[Ignore("Cannot do in Silverlight")]
 #endif
-#if __MonoCS__
-		[Ignore("Expected: True  But was: False")]
-#endif
 		public void TearDown_SavesAssembly_IfProxyGenerated()
 		{
 			string path = ModuleScope.DEFAULT_FILE_NAME;
