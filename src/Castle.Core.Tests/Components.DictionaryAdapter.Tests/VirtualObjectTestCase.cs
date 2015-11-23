@@ -144,9 +144,11 @@ namespace CastleTests.Components.DictionaryAdapter.Tests
 			Assert.IsNull(target.RealizedMember);
 		}
 
+		#pragma warning disable 414
 		private static readonly Node
 			NodeA = new Node(),
 			NodeB = new Node();
+		#pragma warning restore 414
 
 		private static readonly Member
 			MemberA = new Member(),

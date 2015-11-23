@@ -319,9 +319,11 @@ namespace Castle.DynamicProxy.Tests
 		{
 			KeepDataInterceptor interceptor = new KeepDataInterceptor();
 
+			#pragma warning disable 219
 			Assert.Throws<GeneratorException>(delegate {
 				object o = generator.CreateClassProxy(typeof(GenClassWithGenReturn<,>), interceptor);
 			});
+			#pragma warning restore 219
 		}
 	}
 }
