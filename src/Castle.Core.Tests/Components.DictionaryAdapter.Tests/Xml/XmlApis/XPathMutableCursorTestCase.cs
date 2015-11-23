@@ -66,7 +66,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 		    var cursor = Cursor(xml, "A/B/@C", CursorFlags.Multiple);
 
 			Assert.True(cursor.MoveNext());
-			Assert.IsEmpty(cursor.Value);
+			Assert.That(cursor.Value, Is.Empty);
 			Assert.False(cursor.IsNil);
 			Assert.False(cursor.MoveNext());
 		}

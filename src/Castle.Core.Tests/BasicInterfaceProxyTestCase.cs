@@ -240,9 +240,7 @@ namespace Castle.DynamicProxy.Tests
 			else
 				typename = "IList`1";
 
-			StringAssert.StartsWith(
-				String.Format("Can not create proxy for type {0} because type System.Collections.Generic.IList`1 is an open generic type.", typename),
-				ex.Message);
+			Assert.That(ex.Message, Is.StringStarting(String.Format("Can not create proxy for type {0} because type System.Collections.Generic.IList`1 is an open generic type.", typename)));
 		}
 
 		[Test]
@@ -250,9 +248,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws<GeneratorException>(() =>
 				generator.CreateInterfaceProxyWithoutTarget(typeof(PrivateInterface), new IInterceptor[0]));
-			StringAssert.StartsWith(
-				"Can not create proxy for type Castle.DynamicProxy.Tests.BasicInterfaceProxyTestCase+PrivateInterface because it is not accessible. Make it public, or internal",
-				ex.Message);
+			Assert.That(ex.Message, Is.StringStarting("Can not create proxy for type Castle.DynamicProxy.Tests.BasicInterfaceProxyTestCase+PrivateInterface because it is not accessible. Make it public, or internal"));
 		}
 
 		[Test]
@@ -260,9 +256,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws<GeneratorException>(() =>
 				generator.CreateInterfaceProxyWithoutTarget(typeof(IList<PrivateInterface>), new IInterceptor[0]));
-			StringAssert.StartsWith(
-				"Can not create proxy for type System.Collections.Generic.IList`1[[Castle.DynamicProxy.Tests.BasicInterfaceProxyTestCase+PrivateInterface, Castle.Core.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc]] because type Castle.DynamicProxy.Tests.BasicInterfaceProxyTestCase+PrivateInterface is not accessible. Make it public, or internal",
-				ex.Message);
+			Assert.That(ex.Message, Is.StringStarting("Can not create proxy for type System.Collections.Generic.IList`1[[Castle.DynamicProxy.Tests.BasicInterfaceProxyTestCase+PrivateInterface, Castle.Core.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc]] because type Castle.DynamicProxy.Tests.BasicInterfaceProxyTestCase+PrivateInterface is not accessible. Make it public, or internal"));
 		}
 
 		[Test]

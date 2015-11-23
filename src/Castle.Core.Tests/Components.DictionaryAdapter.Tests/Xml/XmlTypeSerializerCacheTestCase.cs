@@ -28,7 +28,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
         {
             var serializer = XmlTypeSerializerCache.Instance[typeof(A)];
 
-            Assert.IsInstanceOf<XmlTypeSerializer>(serializer);
+			Assert.That(serializer, Is.InstanceOf<XmlTypeSerializer>());
         }
 
         [Test]

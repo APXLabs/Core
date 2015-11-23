@@ -46,7 +46,7 @@ namespace CastleTests.Components.DictionaryAdapter.Tests
 			{
 				Assert.AreSame(obj, sender);
 				Assert.NotNull(args);
-				Assert.IsInstanceOf<EventArgs>(args);
+				Assert.That(args, Is.InstanceOf<EventArgs>());
 				fired = true;
 			};
 

@@ -51,7 +51,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.AreSame(s.NextStep, s.NextNode);
 			Assert.IsNull(s.PreviousNode);
 			Assert.NotNull(s.Dependencies);
-			CollectionAssert.IsEmpty(s.Dependencies);
+			Assert.That(s.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -76,7 +76,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.AreSame(s.NextStep, s.NextNode);
 			Assert.IsNull(s.PreviousNode);
 			Assert.NotNull(s.Dependencies);
-			CollectionAssert.IsEmpty(s.Dependencies);
+			Assert.That(s.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -101,7 +101,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.AreSame(s.NextStep, s.NextNode);
 			Assert.IsNull(s.PreviousNode);
 			Assert.NotNull(s.Dependencies);
-			CollectionAssert.IsEmpty(s.Dependencies);
+			Assert.That(s.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -125,7 +125,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.AreSame(s.NextStep, s.NextNode);
 			Assert.IsNull(s.PreviousNode);
 			Assert.NotNull(s.Dependencies);
-			CollectionAssert.IsEmpty(s.Dependencies);
+			Assert.That(s.Dependencies, Is.Empty);
 
 			s = s.NextStep;
 			Assert.NotNull(s);
@@ -139,7 +139,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.AreSame(s.NextStep, s.NextNode);
 			Assert.AreSame(p.FirstStep, s.PreviousNode);
 			Assert.NotNull(s.Dependencies);
-			CollectionAssert.IsEmpty(s.Dependencies);
+			Assert.That(s.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -163,7 +163,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.AreSame(s.NextStep, s.NextNode);
 			Assert.IsNull(s.PreviousNode);
 			Assert.NotNull(s.Dependencies);
-			CollectionAssert.IsEmpty(s.Dependencies);
+			Assert.That(s.Dependencies, Is.Empty);
 
 			s = s.NextStep;
 			Assert.NotNull(s);
@@ -177,7 +177,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.AreSame(s.NextStep, s.NextNode);
 			Assert.AreSame(p.FirstStep, s.PreviousNode);
 			Assert.NotNull(s.Dependencies);
-			CollectionAssert.IsEmpty(s.Dependencies);
+			Assert.That(s.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -213,7 +213,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -249,7 +249,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -285,7 +285,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -321,7 +321,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -356,7 +356,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.Value);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 
 			n = n.NextNode;
 			Assert.NotNull(n);
@@ -368,7 +368,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.AreSame(s.Dependencies[0], n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -403,7 +403,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.Value);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 
 			n = n.NextNode;
 			Assert.NotNull(n);
@@ -415,7 +415,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.AreSame(s.Dependencies[0], n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -450,7 +450,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.Value);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 
 			n = n.NextNode;
 			Assert.NotNull(n);
@@ -462,7 +462,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.AreSame(s.Dependencies[0], n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -500,7 +500,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -535,7 +535,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.Value);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 
 			n = n.NextNode;
 			Assert.NotNull(n);
@@ -547,7 +547,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.AreSame(s.Dependencies[0], n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -583,7 +583,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 
 			n = s.Dependencies[1];
 			Assert.NotNull(n);
@@ -594,7 +594,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -630,7 +630,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 
 			n = s.Dependencies[1];
 			Assert.NotNull(n);
@@ -641,7 +641,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]
@@ -688,7 +688,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 			Assert.IsNull(n.NextNode);
 			Assert.IsNull(n.PreviousNode);
 			Assert.NotNull(n.Dependencies);
-			CollectionAssert.IsEmpty(n.Dependencies);
+			Assert.That(n.Dependencies, Is.Empty);
 		}
 
 		[Test]

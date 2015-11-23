@@ -118,18 +118,18 @@ namespace Castle.DynamicProxy.Tests
 			else
 				typename = "List`1";
 
-			StringAssert.StartsWith(
-				String.Format("Can not create proxy for type {0} because type System.Collections.Generic.List`1 is an open generic type.", typename),
-				ex.Message);
+			Assert.That(
+				ex.Message,
+				Is.StringStarting(String.Format("Can not create proxy for type {0} because type System.Collections.Generic.List`1 is an open generic type.", typename)));
 		}
 
 		[Test]
 		public void Cannot_proxy_inaccessible_class()
 		{
 			var ex = Assert.Throws<GeneratorException>(() => generator.CreateClassProxy(typeof(PrivateClass), new IInterceptor[0]));
-			StringAssert.StartsWith(
-				"Can not create proxy for type Castle.DynamicProxy.Tests.ClassProxyConstructorsTestCase+PrivateClass because it is not accessible. Make it public, or internal",
-				ex.Message);
+			Assert.That(
+				ex.Message,
+				Is.StringStarting("Can not create proxy for type Castle.DynamicProxy.Tests.ClassProxyConstructorsTestCase+PrivateClass because it is not accessible. Make it public, or internal"));
 		}
 
 		[Test]
@@ -137,9 +137,9 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws<GeneratorException>(() =>
 				generator.CreateClassProxy(typeof(List<PrivateClass>), new IInterceptor[0]));
-			StringAssert.StartsWith(
-				"Can not create proxy for type System.Collections.Generic.List`1[[Castle.DynamicProxy.Tests.ClassProxyConstructorsTestCase+PrivateClass, Castle.Core.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc]] because type Castle.DynamicProxy.Tests.ClassProxyConstructorsTestCase+PrivateClass is not accessible. Make it public, or internal",
-				ex.Message);
+			Assert.That(
+				ex.Message,
+				Is.StringStarting("Can not create proxy for type System.Collections.Generic.List`1[[Castle.DynamicProxy.Tests.ClassProxyConstructorsTestCase+PrivateClass, Castle.Core.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc]] because type Castle.DynamicProxy.Tests.ClassProxyConstructorsTestCase+PrivateClass is not accessible. Make it public, or internal"));
 		}
 
 		[Test]

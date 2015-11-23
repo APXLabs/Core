@@ -233,7 +233,7 @@ namespace CastleTests.Core.Tests.Internal
 
 			Dictionary.CopyTo(modified, 1);
 
-			CollectionAssert.AreEquivalent(original, modified);
+			Assert.That(modified, Is.EquivalentTo(original));
 		}
 
 		[Test]
@@ -245,7 +245,7 @@ namespace CastleTests.Core.Tests.Internal
 
 			Dictionary.Keys.CopyTo(modified, 1);
 
-			CollectionAssert.AreEquivalent(original, modified);
+			Assert.That(modified, Is.EquivalentTo(original));
 		}
 
 		[Test]
@@ -257,7 +257,7 @@ namespace CastleTests.Core.Tests.Internal
 
 			Dictionary.Values.CopyTo(modified, 1);
 
-			CollectionAssert.AreEquivalent(original, modified);
+			Assert.That(modified, Is.EquivalentTo(original));
 		}
 
 		[Test]
@@ -608,7 +608,7 @@ namespace CastleTests.Core.Tests.Internal
 
 			Dictionary.CopyTo(modified, 1);
 
-			CollectionAssert.AreEquivalent(original, modified);
+			Assert.That(modified, Is.EquivalentTo(original));
 		}
 
 		[Test]
@@ -620,7 +620,7 @@ namespace CastleTests.Core.Tests.Internal
 
 			Dictionary.Keys.CopyTo(modified, 1);
 
-			CollectionAssert.AreEquivalent(original, modified);
+			Assert.That(modified, Is.EquivalentTo(original));
 		}
 
 		[Test]
@@ -632,7 +632,7 @@ namespace CastleTests.Core.Tests.Internal
 
 			Dictionary.Values.CopyTo(modified, 1);
 
-			CollectionAssert.AreEquivalent(original, modified);
+			Assert.That(modified, Is.EquivalentTo(original));
 		}
 
 		[Test]

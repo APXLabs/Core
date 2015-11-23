@@ -53,7 +53,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 		{
 			var node = NodeForElement("<X/>");
 
-			Assert.IsEmpty(node.Name.NamespaceUri);
+			Assert.That(node.Name.NamespaceUri, Is.Empty);
 		}
 
 		[Test]
@@ -193,7 +193,7 @@ namespace CastleTests.Components.DictionaryAdapter.Xml.Tests
 		{
 			var node = NodeForElement("<X/>");
 
-			Assert.IsEmpty(node.Value);
+			Assert.That(node.Value, Is.Empty);
 		}
 
 		[Test]

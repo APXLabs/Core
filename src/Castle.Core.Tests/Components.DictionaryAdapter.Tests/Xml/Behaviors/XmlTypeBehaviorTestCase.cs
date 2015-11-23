@@ -59,7 +59,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 
 				var baseObj = foo.A;
 				Assert.IsNotNull(baseObj);
-				Assert.IsInstanceOf<IB>(baseObj);
+				Assert.That(baseObj, Is.InstanceOf<IB>());
 
 				var derivedObj = (IB) baseObj;
 				Assert.AreEqual("a", derivedObj.A);

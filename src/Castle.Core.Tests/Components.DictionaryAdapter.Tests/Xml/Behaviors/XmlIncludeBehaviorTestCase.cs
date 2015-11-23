@@ -34,8 +34,8 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 				var obj = Create<TX>(xml);
 
 				var x = GetX(obj);
-				Assert.IsInstanceOf<TA>(x);
-				Assert.IsNotInstanceOf<TB>(x);
+				Assert.That(x, Is.InstanceOf<TA>());
+				Assert.That(x, Is.Not.InstanceOf<TB>());
 				Assert.AreEqual("a", GetA(x));
 			}
 
@@ -46,8 +46,8 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 				var obj = Create<TX>(xml);
 
 				var x = GetX(obj);
-				Assert.IsInstanceOf<TA>(x);
-				Assert.IsNotInstanceOf<TB>(x);
+				Assert.That(x, Is.InstanceOf<TA>());
+				Assert.That(x, Is.Not.InstanceOf<TB>());
 				Assert.AreEqual("a", GetA(x));
 			}
 
@@ -58,7 +58,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 				var obj = Create<TX>(xml);
 
 				var x = GetX(obj);
-				Assert.IsInstanceOf<TB>(x);
+				Assert.That(x, Is.InstanceOf<TB>());
 				Assert.AreEqual("a", GetA(x));
 
 				var b = (TB)x;
@@ -72,7 +72,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 				var obj = Create<TX>(xml);
 
 				var x = GetX(obj);
-				Assert.IsInstanceOf<TA>(x); // virtual
+				Assert.That(x, Is.InstanceOf<TA>());
 				Assert.IsNull(GetA(x));
 			}
 		}

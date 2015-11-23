@@ -96,8 +96,8 @@ namespace Castle.DynamicProxy.Tests
 #else
 			var ex = Assert.Throws<AssertionException>(() => FindVerificationErrors());
 #endif
-			StringAssert.Contains("PeVerify reported error(s)", ex.Message);
-			StringAssert.Contains("fall through end of the method without returning", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("PeVerify reported error(s)"));
+			Assert.That(ex.Message, Contains.Substring("fall through end of the method without returning"));
 		}
 
 		[Test]

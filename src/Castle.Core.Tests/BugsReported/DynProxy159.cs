@@ -52,7 +52,7 @@ namespace CastleTests.BugsReported
 
 			fromSystem = FormatterServices.GetSerializableMembers(typeof(MySerialClass));
 
-			CollectionAssert.AreEquivalent(beforeProxySerialization, fromSystem);
+			Assert.That(beforeProxySerialization, Is.EquivalentTo(fromSystem));
 		}
 
 		[Test]

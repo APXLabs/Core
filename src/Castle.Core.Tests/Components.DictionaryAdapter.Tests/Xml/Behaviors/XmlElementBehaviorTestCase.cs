@@ -92,8 +92,8 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 				var array = foo.Items;
 
 				Assert.AreEqual(2, array.Length);
-				Assert.IsInstanceOf<IDerived1>(array[0]);
-				Assert.IsInstanceOf<IDerived2>(array[1]);
+				Assert.That(array[0], Is.InstanceOf<IDerived1>());
+				Assert.That(array[1], Is.InstanceOf<IDerived2>());
             }
 
             //[Test]

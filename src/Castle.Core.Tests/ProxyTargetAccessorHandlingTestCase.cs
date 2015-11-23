@@ -36,7 +36,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateClassProxy(typeof(object), new[] { typeof(IProxyTargetAccessor) }));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -44,7 +44,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ArgumentException), () =>
 				generator.CreateClassProxy<ImplementsProxyTargetAccessor>());
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -52,7 +52,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateClassProxy(typeof(object), MixIn(new ImplementsProxyTargetAccessor())));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		//-------------
@@ -62,7 +62,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithoutTarget(typeof(IOne), new[] { typeof(IProxyTargetAccessor) }));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -71,7 +71,7 @@ namespace Castle.DynamicProxy.Tests
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithoutTarget(typeof(IOne), new[] { typeof(IProxyTargetAccessor) },
 					MixIn(new ImplementsProxyTargetAccessor())));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -79,7 +79,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithoutTarget(typeof(IProxyTargetAccessor)));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -87,7 +87,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithoutTarget(typeof(IProxyTargetAccessorDerived)));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -95,7 +95,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithTarget(typeof(IOne), new[] { typeof(IProxyTargetAccessor) }, new One()));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -104,7 +104,7 @@ namespace Castle.DynamicProxy.Tests
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithTarget(typeof(IOne), new[] { typeof(IProxyTargetAccessor) }, new One(),
 					MixIn(new ImplementsProxyTargetAccessor())));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -112,7 +112,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithTarget(typeof(IProxyTargetAccessor), new ImplementsProxyTargetAccessor()));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -120,7 +120,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithTarget(typeof(IProxyTargetAccessorDerived), new ImplementsProxyTargetAccessorDerived()));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		//----------------------
@@ -130,7 +130,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithTargetInterface(typeof(IOne), new[] { typeof(IProxyTargetAccessor) }, new One()));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -139,7 +139,7 @@ namespace Castle.DynamicProxy.Tests
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithTargetInterface(typeof(IOne), new[] { typeof(IProxyTargetAccessor) }, new One(),
 					MixIn(new ImplementsProxyTargetAccessor())));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -147,7 +147,7 @@ namespace Castle.DynamicProxy.Tests
 		{
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithTargetInterface(typeof(IProxyTargetAccessor), new ImplementsProxyTargetAccessor()));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 
 		[Test]
@@ -156,7 +156,7 @@ namespace Castle.DynamicProxy.Tests
 			var ex = Assert.Throws(typeof(ProxyGenerationException), () =>
 				generator.CreateInterfaceProxyWithTargetInterface(typeof(IProxyTargetAccessorDerived),
 					new ImplementsProxyTargetAccessorDerived()));
-			StringAssert.Contains("IProxyTargetAccessor", ex.Message);
+			Assert.That(ex.Message, Contains.Substring("IProxyTargetAccessor"));
 		}
 	}
 

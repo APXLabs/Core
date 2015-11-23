@@ -169,7 +169,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
             {
                 var foo = Create<IFoo>("<Foo> <A> <int>1</int> <int>2</int> </A> </Foo>");
 
-				CollectionAssert.AreEquivalent(Items, foo.A);
+				Assert.That(foo.A, Is.EquivalentTo(Items));
             }
 
             [Test]
@@ -179,7 +179,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
                 var foo = Create<IFoo>(xml);
 
 				Assert.NotNull(foo.A);
-				Assert.IsEmpty(foo.A);
+				Assert.That(foo.A, Is.Empty);
 				CustomAssert.AreXmlEquivalent("<Foo A='a'/>", xml);
             }
 
@@ -190,7 +190,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
                 var foo = Create<IFoo>("<Foo/>");
 
 				Assert.NotNull(foo.A);
-				Assert.IsEmpty(foo.A);
+				Assert.That(foo.A, Is.Empty);
 				CustomAssert.AreXmlEquivalent("<Foo/>", xml);
             }
 

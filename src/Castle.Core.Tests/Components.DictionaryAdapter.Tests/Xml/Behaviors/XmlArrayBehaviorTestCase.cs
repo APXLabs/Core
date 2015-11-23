@@ -43,9 +43,9 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 
 				var array = foo.Items;
 				Assert.AreEqual(2, array.Length);
-				Assert.IsInstanceOf<IDerived1>(array[0]);
+				Assert.That(array[0], Is.InstanceOf<IDerived1>());
 				Assert.AreEqual(1, ((IDerived1)array[0]).X);
-				Assert.IsInstanceOf<IDerived2>(array[1]);
+				Assert.That(array[1], Is.InstanceOf<IDerived2>());
 				Assert.AreEqual("2", ((IDerived2)array[1]).X);
             }
 
@@ -65,12 +65,12 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 
 				var array = foo.Items;
 				Assert.AreEqual(2, array.Length);
-				Assert.IsInstanceOf<IDerived1>(array[0]);
+				Assert.That(array[0], Is.InstanceOf<IDerived1>());
 				Assert.AreEqual(1, ((IDerived1)array[0]).X);
-				Assert.IsInstanceOf<IDerived2>(array[1]);
+				Assert.That(array[1], Is.InstanceOf<IDerived2>());
 				Assert.AreEqual("2", ((IDerived2)array[1]).X);
-            }
-        }
+			}
+		}
 	}
 }
 #endif

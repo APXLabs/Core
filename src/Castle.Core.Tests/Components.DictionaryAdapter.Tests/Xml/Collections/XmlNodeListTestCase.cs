@@ -31,7 +31,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 
 			var items = foo.Strings.ToArray();
 
-			CollectionAssert.AreEquivalent(Strings, items);
+			Assert.That(items, Is.EquivalentTo(Strings));
 		}
 
 		[Test]
@@ -39,7 +39,7 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
 		{
 			var foo = Create<IFoo>("<Foo F='1'/>");
 
-			CollectionAssert.IsEmpty(foo.Strings);
+			Assert.That(foo.Strings, Is.Empty);
 		}
 
 		[Test]

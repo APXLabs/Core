@@ -186,7 +186,7 @@ namespace Castle.Core.Tests.Internal
 			var attributes = InterfaceAttributeUtil.GetAttributes(interfaceType, true);
 
 			Assert.IsNotNull(attributes);
-			CollectionAssert.AreEquivalent(expectedAttributes, attributes);
+			Assert.That(attributes, Is.EquivalentTo(expectedAttributes));
 		}
 
 		private static void AssertInvalid(Type interfaceType)
