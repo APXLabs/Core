@@ -20,7 +20,7 @@ namespace Castle.DynamicProxy.Tests
 
 	using NUnit.Framework;
 
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !__ANDROID__
 	using CastleTests.Properties;
 
 	public class FindPeVerify
@@ -129,7 +129,7 @@ namespace Castle.DynamicProxy.Tests
 			get { return verificationDisabled; }
 		}
 
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !__ANDROID__
 #if FEATURE_XUNITNET
 		public void Dispose()
 		{
