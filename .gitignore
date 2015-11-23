@@ -15,3 +15,5 @@ _ReSharper*
 
 *.orig
 *~
+*.userprefs
+Resource.designer.cs

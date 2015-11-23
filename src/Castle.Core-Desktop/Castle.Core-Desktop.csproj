@@ -123,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Core\Logging\DiagnosticsLogger.cs" />
+    <Compile Include="Core\Resource\ConfigResource.cs" />
+    <Compile Include="Core\Resource\ConfigResourceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\buildscripts\CastleKey.snk">

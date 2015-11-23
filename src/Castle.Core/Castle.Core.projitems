@@ -402,7 +402,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Logging\ILoggerFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Logging\LoggerException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Logging\ConsoleLogger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Logging\DiagnosticsLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Logging\LevelFilteredLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Logging\NullLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Logging\StreamLogger.cs" />
@@ -421,8 +420,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Resource\AssemblyResource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Resource\AssemblyResourceFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Resource\AssemblyBundleResource.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Resource\ConfigResource.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Resource\ConfigResourceFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Resource\CustomUri.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Resource\FileResource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Resource\FileResourceFactory.cs" />
