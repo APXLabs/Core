@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !__ANDROID__
 namespace Castle.Core.Logging.Tests
 {
 	using System;
