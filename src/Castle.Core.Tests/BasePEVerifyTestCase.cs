@@ -20,20 +20,54 @@ namespace Castle.DynamicProxy.Tests
 
 	using NUnit.Framework;
 
-#if !__MonoCS__ && !SILVERLIGHT // mono doesn't have PEVerify
+#if !SILVERLIGHT
 	using CastleTests.Properties;
 
 	public class FindPeVerify
 	{
 		private static string FindPeVerifyPath()
 		{
-			var peVerifyProbingPaths = Settings.Default.PeVerifyProbingPaths;
-			foreach (var path in peVerifyProbingPaths)
+			if (IsMono)
 			{
-				var file = Path.Combine(path, "peverify.exe");
-				if (File.Exists(file))
+				// peverify should be in the PATH, so try running it without a containing
+				// directory and see if it works
+				var process = new Process
 				{
-					return file;
+					StartInfo =
+					{
+						FileName = "peverify",
+						RedirectStandardOutput = true,
+						UseShellExecute = false,
+						WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory,
+						CreateNoWindow = true
+					}
+					};
+
+				try
+				{
+					if (!process.Start())
+					{
+						throw new FileNotFoundException(
+							"Please ensure that peverify is installed in a folder that is part of the PATH environment.");
+					}
+				}
+				finally
+				{
+					process.WaitForExit();
+				}
+				return "peverify";
+			}
+			else
+			{
+				// Probably .NET on Windows
+				var peVerifyProbingPaths = Settings.Default.PeVerifyProbingPaths;
+				foreach (var path in peVerifyProbingPaths)
+				{
+					var file = Path.Combine(path, "peverify.exe");
+					if (File.Exists(file))
+					{
+						return file;
+					}
 				}
 			}
 			throw new FileNotFoundException(
@@ -46,6 +80,8 @@ namespace Castle.DynamicProxy.Tests
 		{
 			get { return peVerifyPath ?? (peVerifyPath = FindPeVerifyPath()); }
 		}
+
+		public static readonly bool IsMono = Type.GetType("Mono.Runtime") != null;
 	}
 #endif
 
@@ -93,7 +129,7 @@ namespace Castle.DynamicProxy.Tests
 			get { return verificationDisabled; }
 		}
 
-#if !__MonoCS__ && !SILVERLIGHT // mono doesn't have PEVerify
+#if !SILVERLIGHT
 #if FEATURE_XUNITNET
 		public void Dispose()
 		{
@@ -117,28 +153,50 @@ namespace Castle.DynamicProxy.Tests
 
 		public void RunPEVerifyOnGeneratedAssembly(string assemblyPath)
 		{
+			string args;
+			System.Text.Encoding encoding;
+
+			if (FindPeVerify.IsMono)
+			{
+				args = "\"" + assemblyPath + "\"";
+				// FIXME - the current encoding is most likely UTF-8, but could be something else
+				encoding = System.Text.Encoding.UTF8;
+			}
+			else
+			{
+				args = "\"" + assemblyPath + "\" /VERBOSE";
+				// Windows always uses UTF-16 as its encoding
+				encoding = System.Text.Encoding.Unicode;
+			}
+
 			var process = new Process
 			{
 				StartInfo =
 					{
 						FileName = FindPeVerify.PeVerifyPath,
 						RedirectStandardOutput = true,
+						StandardOutputEncoding = encoding,
+						RedirectStandardError = true,
+						StandardErrorEncoding = encoding,
 						UseShellExecute = false,
 						WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory,
-						Arguments = "\"" + assemblyPath + "\" /VERBOSE",
+						Arguments = args,
 						CreateNoWindow = true
 					}
 			};
 			process.Start();
-			var processOutput = process.StandardOutput.ReadToEnd();
+			var processOutput = process.StandardOutput.ReadToEnd() + process.StandardError.ReadToEnd();
 			process.WaitForExit();
 
 			var result = process.ExitCode + " code ";
 
 			Console.WriteLine(GetType().FullName + ": " + result);
 
-			if (process.ExitCode != 0)
+			if (!FindPeVerify.IsMono && process.ExitCode != 0)
 			{
+				// The peverify on Mono doesn't handle certain features yet, and instead of warning and continuing, it
+				// fails and returns an error. Until it can either implements the missing features or stops failing when
+				// it doesn't know any better, this test should not actually fail on Mono.
 				Console.WriteLine(processOutput);
 				Assert.Fail("PeVerify reported error(s): " + Environment.NewLine + processOutput, result);
 			}
