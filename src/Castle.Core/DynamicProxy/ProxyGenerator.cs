@@ -47,7 +47,7 @@ namespace Castle.DynamicProxy
 		{
 			proxyBuilder = builder;
 
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !__ANDROID__
 			if (HasSecurityPermission())
 			{
 				Logger = new TraceLogger("Castle.DynamicProxy", LoggerLevel.Warn);
@@ -55,7 +55,7 @@ namespace Castle.DynamicProxy
 #endif
 		}
 
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !__ANDROID__
 		private bool HasSecurityPermission()
 		{
 			const SecurityPermissionFlag flag = SecurityPermissionFlag.ControlEvidence | SecurityPermissionFlag.ControlPolicy;

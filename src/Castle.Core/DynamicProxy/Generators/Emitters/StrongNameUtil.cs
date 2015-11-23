@@ -34,7 +34,7 @@ namespace Castle.DynamicProxy.Generators.Emitters
 #endif
 		static StrongNameUtil()
 		{
-#if SILVERLIGHT
+#if SILVERLIGHT || __ANDROID__
 			CanStrongNameAssembly = true;
 #else
 			//idea after http://blogs.msdn.com/dmitryr/archive/2007/01/23/finding-out-the-current-trust-level-in-asp-net.aspx

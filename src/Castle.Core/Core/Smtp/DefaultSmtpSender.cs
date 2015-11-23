@@ -280,7 +280,11 @@ namespace Castle.Core.Smtp
 
 		private static bool CanAccessCredentials()
 		{
+		#if __ANDROID__
+			return true;
+		#else
 			return new SecurityPermission(SecurityPermissionFlag.UnmanagedCode).IsGranted();
+		#endif
 		}
 	}
 	#endif

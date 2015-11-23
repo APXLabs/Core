@@ -23,7 +23,9 @@ namespace Castle.DynamicProxy.Tests
 	using Castle.DynamicProxy.Tests.Interceptors;
 	using Castle.DynamicProxy.Tests.Interfaces;
 	using NUnit.Framework;
+#if !__ANDROID__
 	using RhinoMocksCPPInterfaces;
+#endif
 
 	[TestFixture]
 	public class RhinoMocksTestCase : BasePEVerifyTestCase
@@ -104,7 +106,7 @@ namespace Castle.DynamicProxy.Tests
 			Assert.AreEqual(IntPtr.Zero, buffer);
 		}
 
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !__ANDROID__
 		[Test]
 		public void CanProxyDataSet()
 		{

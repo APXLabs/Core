@@ -26,7 +26,7 @@ namespace Castle.DynamicProxy.Generators
 		static AttributesToAvoidReplicating()
 		{
 			Add<ComImportAttribute>();
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !__ANDROID__
 			Add<SecurityPermissionAttribute>();
 #endif
 #if DOTNET40
