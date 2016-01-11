@@ -6,13 +6,26 @@ open Fake
 
 // Properties
 let artifactsDir = @"./artifacts/"
-let artifactsBuildDir = "./artifacts/build/"
-let artifactsNuGetDir = "./artifacts/nuget/"
+let artifactsBuildDir = @"./artifacts/build/"
+let artifactsNuGetDir = @"./artifacts/nuget/"
 let androidProject = @"./src/Castle.Core-Android/Castle.Core-Android.csproj"
 let androidNuspec = @"./buildscripts/Castle.Core-Android.nuspec"
 let projects =  [androidProject]
 
 // Targets
+
+Target "Clean" (fun _ ->
+    trace "Cleanup..."
+    
+    CleanDirs [artifactsDir]
+)
+
+Target "Build" (fun _ ->
+   trace "Building..."
+   
+   MSBuildRelease artifactsBuildDir "Build" projects
+   |> Log "AppBuild-Output: "
+)
 
 Target "PackDroid" (fun _ ->
     trace "Packaging for Xamarin.Android ..."
@@ -29,23 +42,16 @@ Target "PackDroid" (fun _ ->
             androidNuspec
 )
 
-Target "Clean" (fun _ ->
-    trace "Cleanup..."
-    
-    CleanDirs [artifactsDir]
-)
-
-Target "Build" (fun _ ->
-   trace "Building..."
-   
-   MSBuildRelease artifactsBuildDir "Build" projects
-   |> Log "AppBuild-Output: "
+Target "Publish" (fun _ -> 
+    let path = Path.Combine(artifactsNuGetDir, "*.nupkg")
+    PublishArtifact path
 )
 
 // Dependencies
 "Clean"
   ==> "Build"
   ==> "PackDroid"
+  ==> "Publish"
 
 // start build
-RunTargetOrDefault "PackDroid"
+RunTargetOrDefault "Publish"
