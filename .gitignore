@@ -17,3 +17,6 @@ _ReSharper*
 *~
 *.userprefs
 Resource.designer.cs
+
+packages
+.fake
