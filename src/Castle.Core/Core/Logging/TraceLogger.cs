@@ -14,7 +14,7 @@
 
 namespace Castle.Core.Logging
 {
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !__ANDROID__
 	using System;
 	using System.Diagnostics;
 	using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace Castle.Core.Logging
 	{
 		private static readonly Dictionary<string, TraceSource> cache = new Dictionary<string, TraceSource>();
 
-		private TraceSource traceSource;
+		private TraceLogger traceSource;
 
 		/// <summary>
 		/// Build a new trace logger based on the named TraceSource
@@ -100,6 +100,7 @@ namespace Castle.Core.Logging
 		{
 			if (exception == null)
 			{
+
 				traceSource.TraceEvent(MapTraceEventType(loggerLevel), 0, message);
 			}
 			else

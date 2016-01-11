@@ -19,7 +19,7 @@ namespace Castle.Core.Logging
 
 #endif
 
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !__ANDROID__
 
 	/// <summary>
 	///   Used to create the TraceLogger implementation of ILogger interface. See <see cref = "TraceLogger" />.
