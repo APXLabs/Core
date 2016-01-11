@@ -21,4 +21,5 @@ Resource.designer.cs
 packages
 .fake
 artifacts
-
+tools/FAKE
+!tools/NuGet.exe
